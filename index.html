@@ -1,2 +1,90 @@
-<h1>Tryba Wojciech</h1><br> mail: <b>trybawojciech(at)gmail.com</b><br> 
-telegram: <b>@trybawojciech</b>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <style rel="stylesheet">
+        body {
+            font-family: 'VT323', monospace;
+            font-size: 1.5em;
+        }
+
+        ;
+    </style>
+    <script type="text/javascript">
+        var message = [];
+
+        function mergemail() {
+            var str1 = "trybawojciech";
+            var str2 = "@";
+            var str3 = "gmail.com</br>";
+            var res = str1.concat(str2);
+            var mail = res.concat(str3);
+            return mail;
+        }
+
+        function redirect(link) {
+            window.open(link);
+            clearanswer();
+        }
+
+        function showmsg(number) {
+            document.getElementById("container").innerHTML += message[number];
+            clearanswer();
+            document.getElementById('command').scrollIntoView();
+        }
+
+        function clearanswer() {
+            document.getElementById("command").value = "";
+        }
+
+        function init() {
+            document.getElementById("command")
+                .addEventListener("keyup", function (event) {
+                    event.preventDefault();
+                    if (event.keyCode == 13) {
+                        cmd();
+                    }
+                });
+
+            message[00] = "<i>Type \"help\" for more commands.</i></br>";
+            message[42] = "mail - show email adress</br>telegram - show telegram id</br>github - open new tab with github page</br>";
+            message[1] = mergemail();
+            message[2] = "@trybawojciech</br>";
+
+            var respond = document.getElementById("container");
+            respond.innerHTML = message[0];
+        }
+
+        function cmd() {
+            respond = document.getElementById("container");
+            command = document.getElementById("command").value;
+            if (command == "mail") {
+                showmsg(1);
+            }
+            else if (command == "telegram") {
+                showmsg(2);
+            }
+            else if (command == "github") {
+                redirect("https://github.com/trybawojciech");
+            }
+            else if (command == "help") {
+                showmsg(42);
+            }
+            else {
+                showmsg(00);
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    Tryba Wojciech 1995/06/09</br>
+    PHP/JS/SQL</br>
+    <div id="container">
+    </div>
+    trybawojciech@github:~$
+    <input type="text" id="command" autofocus="autofocus">
+</body>
+
+</html>
