@@ -28,6 +28,12 @@
         }
 
         function showmsg(number) {
+            
+            message[00] = "<i>Type \"help\" for more commands.</i></br>";
+            message[42] = "mail - show email adress</br>telegram - show telegram id</br>github - open new tab with github page</br>";
+            message[1] = mergemail();
+            message[2] = "@trybawojciech</br>";            
+            
             document.getElementById("container").innerHTML += message[number];
             clearanswer();
             document.getElementById('command').scrollIntoView();
@@ -45,11 +51,6 @@
                         cmd();
                     }
                 });
-
-            message[00] = "<i>Type \"help\" for more commands.</i></br>";
-            message[42] = "mail - show email adress</br>telegram - show telegram id</br>github - open new tab with github page</br>";
-            message[1] = mergemail();
-            message[2] = "@trybawojciech</br>";
 
             var respond = document.getElementById("container");
             respond.innerHTML = message[0];
